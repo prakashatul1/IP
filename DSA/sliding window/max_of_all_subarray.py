@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def find_max_subarray(array_int: list[int], k: int) -> list[int]:
     i, j = 0, 0
     length = len(array_int)
