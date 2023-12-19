@@ -1,7 +1,7 @@
 from collections import deque
 
 
-def find_negative_subarray(array_int: list[int], sum: int) -> int:
+def find_longest_subarray(array_int: list[int], sum: int) -> int:
     i, j = 0, 0
     length = len(array_int)
     maxi = 0
@@ -20,7 +20,7 @@ def find_negative_subarray(array_int: list[int], sum: int) -> int:
             maxi = max(maxi, j - i + 1)
 
         # adjustment for next window
-        if calculation_sum > sum:
+        elif calculation_sum > sum:
             calculation_sum = calculation_sum - array_int[i]
             i += 1
 
@@ -29,5 +29,5 @@ def find_negative_subarray(array_int: list[int], sum: int) -> int:
     return maxi
 
 
-array1 = [4, 1, 1, 1 ,1, 1, 2, 3, 5]
-print(find_negative_subarray(array1, 1))
+array1 = [4, 1, 1, 1, 1, 1, 2, 3, 5]
+print(find_longest_subarray(array1, 1))
