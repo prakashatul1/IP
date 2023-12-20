@@ -1,30 +1,29 @@
-# Python arrays are dynamic by default, but this is an example of resizing.
-class Array:
+# Complex Systems
+class Authorization:
+    def authorize(self):
+        print("Authorization complete.")
+
+class CurrencyConverter:
+    def convert(self, amount):
+        print(f"Converted amount: ${amount}")
+        return amount
+
+class PaymentProcessor:
+    def process(self, amount):
+        print(f"Processed payment of ${amount}")
+
+# Facade
+class PaymentServiceFacade:
     def __init__(self):
-        self.capacity = 2
-        self.length = 0
-        self.arr = [0] * 2  # Array of capacity = 2
+        self.authorizer = Authorization()
+        self.converter = CurrencyConverter()
+        self.processor = PaymentProcessor()
 
-    # Insert n in the last position of the array
-    def pushback(self, n):
-        if self.length == self.capacity:
-            self.resize()
+    def make_payment(self, amount):
+        self.authorizer.authorize()
+        converted_amount = self.converter.convert(amount)
+        self.processor.process(converted_amount)
 
-        # insert at next empty position
-        self.arr[self.length] = n
-        self.length += 1
-
-    def resize(self):
-        # Create new array of double capacity
-        self.capacity = 2 * self.capacity
-        newArr = [0] * self.capacity
-
-        # Copy elements to newArr
-        for i in range(self.length):
-            newArr[i] = self.arr[i]
-        self.arr = newArr
-
-    # Remove the last element in the array
-    def popback(self):
-        if self.length > 0:
-            self.length -= 1
+# Usage
+payment_service = PaymentServiceFacade()
+payment_service.make_payment(100)

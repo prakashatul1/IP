@@ -1,38 +1,29 @@
-from abc import ABC, abstractmethod
-
-
-class FilterStrategy(ABC):
-
-    @abstractmethod
-    def removeValue(self, val):
+# Strategy Interface
+class PaymentMethod:
+    def pay(self, amount):
         pass
 
+# Concrete Strategies
+class CreditCardPayment(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paying ${amount} using Credit Card.")
 
-class RemoveNegativeStrategy(FilterStrategy):
+class PayPalPayment(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paying ${amount} using PayPal.")
 
-    def removeValue(self, val):
-        return val < 0
+class BitcoinPayment(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paying ${amount} using Bitcoin.")
 
+# Context
+class PaymentProcessor:
+    def __init__(self, payment_method):
+        self.payment_method = payment_method
 
-class RemoveOddStrategy(FilterStrategy):
+    def process_payment(self, amount):
+        self.payment_method.pay(amount)
 
-    def removeValue(self, val):
-        return abs(val) % 2
-
-
-class Values:
-    def __init__(self, vals):
-        self.vals = vals
-
-    def filter(self, strategy):
-        res = []
-        for n in self.vals:
-            if not strategy.removeValue(n):
-                res.append(n)
-        return res
-
-
-values = Values([-7, -4, -1, 0, 2, 6, 9])
-
-print(values.filter(RemoveNegativeStrategy()))
-print(values.filter(RemoveOddStrategy()))
+# Usage
+payment_processor = PaymentProcessor(CreditCardPayment())
+payment_processor.process_payment(100)

@@ -1,44 +1,23 @@
-class UsbCable:
-    def __init__(self):
-        self.isPlugged = False
+# Target Interface
+class DollarPaymentProcessor:
+    def process_payment(self, dollars):
+        print(f"Processing ${dollars} payment.")
 
-    def plugUsb(self):
-        self.isPlugged = True
+# Adaptee
+class EuroPayment:
+    def pay_in_euros(self, euros):
+        print(f"Paying €{euros} in euros.")
 
+# Adapter
+class EuroToDollarAdapter(DollarPaymentProcessor):
+    def __init__(self, euro_payment):
+        self.euro_payment = euro_payment
 
-class UsbPort:
-    def __init__(self):
-        self.portAvailable = True
+    def process_payment(self, dollars):
+        euros = dollars * 0.85  # Assuming 1 dollar = 0.85 euros
+        self.euro_payment.pay_in_euros(euros)
 
-    def plug(self, usb):
-        if self.portAvailable:
-            usb.plugUsb()
-            self.portAvailable = False
-
-
-# UsbCables can plug directly into Usb ports
-usbCable = UsbCable()
-usbPort1 = UsbPort()
-usbPort1.plug(usbCable)
-
-
-class MicroUsbCable:
-    def __init__(self):
-        self.isPlugged = False
-
-    def plugMicroUsb(self):
-        self.isPlugged = True
-
-
-class MicroToUsbAdapter(UsbCable):
-    def __init__(self, microUsbCable):
-        self.microUsbCable = microUsbCable
-        self.microUsbCable.plugMicroUsb()
-
-    # can override UsbCable.plugUsb() if needed
-
-
-# MicroUsbCables can plug into Usb ports via an adapter
-microToUsbAdapter = MicroToUsbAdapter(MicroUsbCable())
-usbPort2 = UsbPort()
-usbPort2.plug(microToUsbAdapter)
+# Usage
+euro_payment = EuroPayment()
+adapter = EuroToDollarAdapter(euro_payment)
+adapter.process_payment(100)  # $100
