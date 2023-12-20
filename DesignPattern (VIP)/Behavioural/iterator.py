@@ -21,7 +21,6 @@ class LinkedList:
             return val
         else:
             raise StopIteration
-
 # Initialize LinkedList
 head = ListNode(1)
 head.next = ListNode(2)

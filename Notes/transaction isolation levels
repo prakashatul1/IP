@@ -1,0 +1,27 @@
+Dirty reads
+
+Tran A - update product price=1000 where productNo = 123
+Tran B - select * from product where productNo = 123
+
+Non Repeatable reads
+
+Tran A - select * from products where productNo = 123
+Tran B - update product price=1000 where productNo = 123
+Tran A - select * from products where productNo = 123
+
+Phantom reads
+
+Tran A - select * from product where price > 2000
+Tran B - insert into product (id, price) values (123, 3000)
+Tran A - select * from product where price > 2000
+
+
+Transaction Isolation Level
+
+TRANSACTION_READ_UNCOMMITTED
+TRANSACTION_READ_COMMITTED
+TRANSACTION_REPEATABLE_READ
+TRANSACTION_SERIALIZABLE
+
+
+
