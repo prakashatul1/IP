@@ -1,0 +1,12 @@
+3 types of indexing
+
+primary - dense
+          sparse
+
+cluster indexing
+        upi payment data
+
+secondary indexing
+
+        primary indexing
+        secondary indexing on column 2
