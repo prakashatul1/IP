@@ -135,7 +135,7 @@ def subtractLinkedList(l1, l2):
             sNode = l2
         else:
             sNode = l1
-        sNode = paddZeros(sNode,abs(len1 - len2))
+        sNode = paddZeros(sNode, abs(len1 - len2))
 
     else:
 
