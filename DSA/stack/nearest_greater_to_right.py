@@ -44,7 +44,7 @@ def find_nearest_greater_to_right(array_list):
         # add element in stack for next loop calculation
         calculation_stack.push(j)
 
-    return result_list
+    return result_list[::-1]
 
 
 print(find_nearest_greater_to_right([1, 3, 2, 4]))

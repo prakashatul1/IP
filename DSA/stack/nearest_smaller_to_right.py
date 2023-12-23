@@ -27,7 +27,7 @@ def find_nearest_smaller_to_right(a):
 
         s.push(a[i])
 
-    return v
+    return v[::-1]
 
 
 print(find_nearest_smaller_to_right([4, 5, 2, 10, 8]))
