@@ -24,7 +24,7 @@ def find_maximum_area_histogram(a):
                     v.append(s.top()[1])
         s.push((a[i], i))
 
-    print(v)
+    # print(v)
 
     # NSR
     for i in range(len(a) - 1, -1, -1):
@@ -43,7 +43,7 @@ def find_maximum_area_histogram(a):
         s2.push((a[i], i))
 
     v2 = v2[::-1]
-    print(v2)
+    # print(v2)
 
     result = 0
 
@@ -54,4 +54,4 @@ def find_maximum_area_histogram(a):
     return result
 
 
-print(find_maximum_area_histogram([6, 2, 5, 4, 5, 1, 6]))
+# print(find_maximum_area_histogram([6, 2, 5, 4, 5, 1, 6]))
