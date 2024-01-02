@@ -1,5 +1,6 @@
 # Dependency Inversion Principle (DIP)
 # Abstractions should not depend upon details. Details should depend upon abstractions.
+# depend of interface rather than concrete class
 
 
 from abc import ABC, abstractmethod

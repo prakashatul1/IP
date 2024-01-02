@@ -3,18 +3,22 @@ class PaymentMethod:
     def pay(self, amount):
         pass
 
+
 # Concrete Strategies
 class CreditCardPayment(PaymentMethod):
     def pay(self, amount):
         print(f"Paying ${amount} using Credit Card.")
 
+
 class PayPalPayment(PaymentMethod):
     def pay(self, amount):
         print(f"Paying ${amount} using PayPal.")
 
+
 class BitcoinPayment(PaymentMethod):
     def pay(self, amount):
         print(f"Paying ${amount} using Bitcoin.")
+
 
 # Context
 class PaymentProcessor:
@@ -23,6 +27,7 @@ class PaymentProcessor:
 
     def process_payment(self, amount):
         self.payment_method.pay(amount)
+
 
 # Usage
 payment_processor = PaymentProcessor(CreditCardPayment())

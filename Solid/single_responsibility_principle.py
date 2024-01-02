@@ -1,6 +1,7 @@
 # Single-Responsibility Principle (SRP)
 # class should have only one responsibility, as expressed through its methods.
 # If a class takes care of more than one task, then you should separate those tasks into separate classes.
+# a class should have only one reason to change
 
 from pathlib import Path
 from zipfile import ZipFile
