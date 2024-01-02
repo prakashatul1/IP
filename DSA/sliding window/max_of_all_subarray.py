@@ -9,17 +9,24 @@ def find_max_subarray(array_int: list[int], k: int) -> list[int]:
 
     while j < length:
 
-        # calculation in cache
-        if (len(l) == 0) or (l[0] > array_int[j]):
-            l.append(array_int[j])
-        elif l[0] < array_int[j]:
-            l.appendleft(array_int[j])
+        """
+        remove element from deque from right if current element in loop
+        is greater than smallest element in deque in the right
+        """
+        while l and array_int[j] > l[-1]:
+            l.pop()
 
-        # increasing window till size k
+        # calculation in deque
+        # add every element to deque
+        # eg : 5, 4, 3
+        l.append(array_int[j])
+
+
+        # increasing window till size by 1
         if j - i + 1 < k:
             j += 1
 
-        # when window is of size k
+        # if window is of size k
         elif j - i + 1 == k:
 
             # result for the window
@@ -27,6 +34,8 @@ def find_max_subarray(array_int: list[int], k: int) -> list[int]:
 
             # adjust the calculation cache to work with next
             # window before increasing i
+            # basically removing element from left of deque
+            # since it has maximum element after each window calculation
             if array_int[i] == l[0]:
                 l.popleft()
 
@@ -36,5 +45,10 @@ def find_max_subarray(array_int: list[int], k: int) -> list[int]:
     return result
 
 
-array1 = [3, 1, -1, -2, 5, 3, 6, 7]
+# array1 = [3, 1, -1, -2, 5, 3, 6, 7]
+array1 = [1, 2, 3, 1, 4, 5, 2, 3, 6]
+array1 = [1,3,-1,-3,5,3,6,7]
+array1 = [1,3,1,2,0,5]
+array1 = [-7,-8,7,5,7,1,6,0]
+
 print(find_max_subarray(array1, 3))
