@@ -6,9 +6,10 @@ def find_nearest_greater_to_right(array_list):
     result_list = []
 
     # loop from ending to beginning since it is right
-    for i in range(len(array_list) - 1, -1, -1):
+    for i in range(2*len(array_list) - 1, -1, -1):
 
         # for dry
+        i = i % (len(array_list)-1)
         j = array_list[i]
 
         # 3 conditions
@@ -44,7 +45,7 @@ def find_nearest_greater_to_right(array_list):
         # add element in stack for next loop calculation
         calculation_stack.push(j)
 
-    return result_list[::-1]
+    return result_list[:len(array_list)-1:-1]
 
 
 array1 = [1, 7, 5, 3, 9, 4]
