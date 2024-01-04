@@ -1,0 +1,10 @@
+Types of Throttling:
+
+Concurrent Request Throttling: Limits the number of concurrent requests a user can make.
+Rate-Based Throttling: Limits the number of requests over a time interval (e.g., 100 requests per minute).
+Bandwidth Throttling: Restricts the amount of data transmitted over a network within a certain period.
+
+HTTP Responses:
+
+429 Too Many Requests HTTP status code
+
