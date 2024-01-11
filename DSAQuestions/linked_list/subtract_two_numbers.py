@@ -18,7 +18,7 @@ def newNode(data):
 
 
 # A utility function to get
-# length of linked list
+# length of linked_list
 def getLength(Node):
     size = 0
 
@@ -102,7 +102,7 @@ def subtractLinkedListHelper(l1, l2):
 
 
 # This API subtracts two linked lists
-# and returns the linked list which
+# and returns the linked_list which
 # shall have the subtracted result.
 def subtractLinkedList(l1, l2):
     # Base Case.
@@ -141,8 +141,8 @@ def subtractLinkedList(l1, l2):
 
         # If both list lengths are equal, then
         # calculate the larger and smaller list.
-        # If 5-6-7 & 5-6-8 are linked list, then
-        # walk through linked list at last Node
+        # If 5-6-7 & 5-6-8 are linked_list, then
+        # walk through linked_list at last Node
         # as 7 < 8, larger Node is 5-6-8 and
         # smaller Node is 5-6-7.
         while (l1 != None and l2 != None):
@@ -166,14 +166,14 @@ def subtractLinkedList(l1, l2):
     # After calculating larger and smaller
     # Node, call subtractLinkedListHelper
     # which returns the subtracted
-    # linked list.
+    # linked_list.
     borrow = False
     return subtractLinkedListHelper(lNode,
                                     sNode)
 
 
 # A utility function to print
-# linked list
+# linked_list
 def printList(Node):
     while (Node != None):
         print(Node.data,

@@ -13,7 +13,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    # Function to reverse the linked list
+    # Function to reverse the linked_list
     def reverse(self):
         prev = None
         current = self.head
