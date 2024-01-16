@@ -1,3 +1,4 @@
+# find the index if smallest element
 def find_no_of_times(arr):
 
     start = 0

@@ -1,3 +1,4 @@
+# return int
 def binary_search(arr, ele):
     l: int = len(arr)
     start = 0
