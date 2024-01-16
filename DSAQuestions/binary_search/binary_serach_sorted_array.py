@@ -1,5 +1,5 @@
 def binary_search(arr, ele):
-    l = len(arr)
+    l: int = len(arr)
     left = 0
     right = l - 1
 
