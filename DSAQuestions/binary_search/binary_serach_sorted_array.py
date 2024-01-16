@@ -1,16 +1,16 @@
 def binary_search(arr, ele):
     l: int = len(arr)
-    left = 0
-    right = l - 1
+    start = 0
+    end = l - 1
 
-    while left <= right:
+    while start <= end:
 
-        mid = left + right // 2  # start + ((end - start)/2)
+        mid = start + end // 2  # start + ((end - start)/2)
         if ele == arr[mid]:
             return mid
         elif ele < arr[mid]:
-            right = mid - 1
+            end = mid - 1
         elif ele > arr[mid]:
-            left = mid + 1
+            start = mid + 1
 
     return -1
