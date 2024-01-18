@@ -1,4 +1,4 @@
-from maximum_area_histogram import find_maximum_area_histogram
+from g_maximum_area_histogram import find_maximum_area_histogram
 
 
 def find_max_area_rectangle_binary_matrix(a_list):
