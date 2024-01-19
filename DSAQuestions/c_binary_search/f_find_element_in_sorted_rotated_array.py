@@ -1,5 +1,5 @@
-from no_of_times_sorted_array_is_rotated import find_no_of_times
-from binary_serach_sorted_array import binary_search
+from d_no_of_times_sorted_array_is_rotated import find_no_of_times
+from a_binary_serach_sorted_array import binary_search
 
 
 def find_element_in_sorted_rotated_array(array_1, ele):

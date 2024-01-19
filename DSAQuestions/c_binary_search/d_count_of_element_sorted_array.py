@@ -1,4 +1,4 @@
-from first_n_last_occurance import first_occurrence, last_occurrence
+from c_first_n_last_occurance import first_occurrence, last_occurrence
 
 
 def find_count(arr, ele):
