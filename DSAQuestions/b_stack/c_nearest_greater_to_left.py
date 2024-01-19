@@ -28,7 +28,7 @@ def find_nearest_greater_to_left(array_list):
             # 3rd Condition if next element is not grater
             elif calculation_stack.top() <= j:
 
-                # loop till end of stack to find next greater
+                # loop till end of b_stack to find next greater
                 # till one of the condition is met
                 while calculation_stack.stackSize > 0 and \
                         calculation_stack.top() <= j:
@@ -41,7 +41,7 @@ def find_nearest_greater_to_left(array_list):
                 else:
                     result_list.append(calculation_stack.top())
 
-        # add element in stack for next loop calculation
+        # add element in b_stack for next loop calculation
         calculation_stack.push(j)
 
     return result_list

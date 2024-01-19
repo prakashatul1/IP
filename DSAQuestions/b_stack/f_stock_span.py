@@ -32,7 +32,7 @@ def find_consecutive_smaller_or_equal_before(a):
                 else:
                     v.append(s.top()[1])
 
-        # this will identify that s stack has a tuple
+        # this will identify that s b_stack has a tuple
         # of size 2
         s.push((a[i], i))
 

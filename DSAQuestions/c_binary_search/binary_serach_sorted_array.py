@@ -18,4 +18,4 @@ def binary_search(arr, ele):
 
 
 # array1 = [5, 6, 7]
-# print(binary_search(array1, 7))
+# print(c_binary_search(array1, 7))
