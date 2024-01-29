@@ -1,7 +1,6 @@
 def first_occurrence(arr, ele):
-    l: int = len(arr)
     start = 0
-    end = l - 1
+    end = len(arr) - 1
     res = -1
 
     while start <= end:
@@ -19,9 +18,8 @@ def first_occurrence(arr, ele):
 
 
 def last_occurrence(arr, ele):
-    l: int = len(arr)
     start = 0
-    end = l - 1
+    end = len(arr) - 1
     res = -1
 
     while start <= end:
