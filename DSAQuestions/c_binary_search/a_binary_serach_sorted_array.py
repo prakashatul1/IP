@@ -1,6 +1,6 @@
 # return int
 def binary_search(arr, ele):
-    l: int = len(arr)
+
     start = 0
     end = len(arr) - 1
 
@@ -17,5 +17,5 @@ def binary_search(arr, ele):
     return -1
 
 
-# array1 = [5, 6, 7]
-# print(c_binary_search(array1, 7))
+array1 = [5, 6, 7]
+print(binary_search(array1, 7))
