@@ -4,14 +4,14 @@ from collections import deque
 def find_negative_subarray(array_int: list[int], k: int) -> list[int]:
     i, j = 0, 0
     length = len(array_int)
-    l = deque()
+    calc_list = []
     result = []
 
     while j < length:
 
         # calculation in cache
         if array_int[j] < 0:
-            l.append(array_int[j])
+            calc_list.append(array_int[j])
 
         # increasing window till size k
         if j - i + 1 < k:
@@ -21,15 +21,15 @@ def find_negative_subarray(array_int: list[int], k: int) -> list[int]:
         elif j - i + 1 == k:
 
             # result for the window
-            if len(l) == 0:
+            if len(calc_list) == 0:
                 result.append(0)
             else:
-                result.append(l[0])
+                result.append(calc_list[0])
 
                 # adjust the calculation cache to work with next
                 # window before increasing i
-                if array_int[i] == l[0]:
-                    l.popleft()
+                if array_int[i] == calc_list[0]:
+                    calc_list.pop(0)
 
             j += 1
             i += 1
