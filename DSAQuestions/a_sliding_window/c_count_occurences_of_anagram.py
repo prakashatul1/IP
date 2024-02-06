@@ -1,43 +1,53 @@
+# Input:
+# txt = forxxorfxdofr
+# pat = for
+# Output: 3
+# Explanation: for, orf and ofr appears
+# in the txt, hence answer is 3.
+
 def count_occurrence(string1: str, string2: str) -> int:
-    i, j = 0, 0
-    length = len(string1)
-    k = len(string2)
-    result = 0
-    calculation = k
+    if len(string2) > len(string1):
+        return 0
 
     pattern_dict = {}
-    for each in range(k):
-        if not string2[each] in pattern_dict:
-            pattern_dict[string2[each]] = 1
+    for char in string2:
+        if char in pattern_dict:
+            pattern_dict[char] += 1
         else:
-            pattern_dict[string2[each]] += 1
+            pattern_dict[char] = 1
 
-    while j < length:
+    start, matched = 0, 0
+    result = 0
+    window_dict = {}
 
-        # calculation in cache
-        if string1[j] in pattern_dict:
-            calculation -= 1
+    # Start sliding the window
+    for end in range(len(string1)):
+        char_end = string1[end]
 
-        # increasing window till size k
-        if j - i + 1 < k:
-            j += 1
+        if char_end in pattern_dict:
+            if char_end in window_dict:
+                window_dict[char_end] += 1
+            else:
+                window_dict[char_end] = 1
 
-        # when window is of size k
-        elif j - i + 1 == k:
+            if window_dict[char_end] == pattern_dict[char_end]:
+                matched += 1
 
-            # result for the window
-            if calculation == 0:
-                result += 1
+        # Shrink the window if it's size exceeds string2's length
+        if end >= len(string2):
+            char_start = string1[start]
+            start += 1
+            if char_start in window_dict:
+                if window_dict[char_start] == pattern_dict[char_start]:
+                    matched -= 1
+                window_dict[char_start] -= 1
 
-            # adjust the calculation cache to work with next
-            # window before increasing i
-            if string1[i] in pattern_dict:
-                calculation += 1
-
-            j += 1
-            i += 1
+        # Check if we have all matches
+        if matched == len(pattern_dict):
+            result += 1
 
     return result
+
 
 
 # string1 = "forxxorfxdofr"
