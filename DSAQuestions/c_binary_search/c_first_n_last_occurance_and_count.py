@@ -34,3 +34,10 @@ def last_occurrence(arr, ele):
             start = mid + 1
 
     return res
+
+
+def find_count(arr, ele):
+    first = first_occurrence(arr, ele)
+    last = last_occurrence(arr, ele)
+
+    return last - first + 1

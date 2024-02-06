@@ -18,4 +18,4 @@ def search_in_nearly_sorted_array(arr, ele):
 
 
 array1 = [5, 6, 7, 8, 10 , 9]
-print(search_in_nearly_sorted_array(array1, 5))
+print(search_in_nearly_sorted_array(array1, 9))
