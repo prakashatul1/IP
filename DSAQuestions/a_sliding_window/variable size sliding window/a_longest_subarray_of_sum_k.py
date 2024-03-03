@@ -1,6 +1,3 @@
-from collections import deque
-
-
 def find_longest_subarray(array_int: list[int], total_sum: int) -> int:
     i, j = 0, 0
     length = len(array_int)

@@ -59,3 +59,38 @@
 # bandwidth = max bits that can be transmitted over a network per sec
 # throughput = actual measured bits getting transferred over a network per second
 
+# cap theorem 
+- consistent
+- available
+- partitioned
+- cp or ap
+- takes time to reach consistently
+- available means you get info right away
+
+# calculate time to upload instagram
+- one operation takes t ms time by single thread
+- how many operation in one sec =  1000/t
+- number of threads in a server = 100
+- no of api calls all threads in a machine can handle = 100000/t
+- 30% capacity of cpu = 30000/t
+
+### File upload
+- 8 mega bit/sec internet speed = 1 mega byte per second
+- 200 kb - 200 ms image upload
+- t = 200ms
+- 30000/200 =  150 req/sec
+- for 1000 rps ~ 7*150 = 1050 rps
+
+# how much storage
+### file
+- total space required for 10 years
+- per second size = 1000 rps * size of photo = 1000*200 = 200000 kb
+- 86400 ~ 10000 sec a day =  200000 kb * 10000 * 400(365 days rounded) 
+- 800 terabytes in a year
+- 10 years ~ 8000 tb
+
+### Metadata
+
+- 228 bytes per row * 400 billion photos ~= 100 tb 
+- 1 shard can hold 1 tb 100tb = 100 shards
+- 
