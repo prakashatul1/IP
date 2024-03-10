@@ -7,19 +7,36 @@ class Node:
         self.next = None
 
 
-class LinkedList:
+def reverseList(head):
+    prev, curr = None, head
 
-    # Function to initialize head
-    def __init__(self):
-        self.head = None
+    while curr:
+        nxt = curr.next
+        curr.next = prev
+        prev = curr
+        curr = nxt
 
-    # Function to reverse the linked_list
-    def reverse(self):
-        prev = None
-        current = self.head
-        while (current is not None):
-            next = current.next
-            current.next = prev
-            prev = current
-            current = next
-        self.head = prev
+    return prev
+
+
+def reverseListRecursive(head):
+    if not head:
+        return None
+
+    newHead = head
+    if head.next:
+        newHead = reverseListRecursive(head.next)
+        head.next.next = head
+    head.next = None
+    return newHead
+
+
+node1 = Node(1)
+node1.next = Node(2)
+node1.next.next = Node(3)
+node1.next.next.next = Node(4)
+
+result = reverseListRecursive(node1)
+print(result.data)
+
+

@@ -80,3 +80,43 @@ def postorder(root):
     postorder(root.left)
     postorder(root.right)
     print(root.val)
+
+
+def DFS(root):
+    queue = []
+
+    if root:
+        queue.append(root)
+
+    level = 0
+    while len(queue) > 0:
+        print('level:', level)
+
+        for i in range(len(queue)):
+            curr = queue.pop(0)
+            print(curr.val)
+            if curr.left:
+                queue.append(curr.left)
+            if curr.right:
+                queue.append(curr.right)
+        level += 1
+
+
+
+
+root_node = TreeNode(val=27)
+insert(root_node, val=30)
+insert(root_node, val=22)
+insert(root_node, val=24)
+insert(root_node, val=17)
+# remove()
+
+
+inorder(root_node)
+# 17, 22, 24, 27, 30
+print('\n')
+preorder(root_node)
+# 27, 22, 17, 24, 30
+print('\n')
+DFS(root_node)
+# 27, 22, 30, 17, 24
