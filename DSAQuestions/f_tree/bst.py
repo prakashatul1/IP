@@ -58,28 +58,50 @@ def search(root, target):
         return True
 
 
-def inorder(root):
-    if not root:
-        return
-    inorder(root.left)
-    print(root.val)
-    inorder(root.right)
+def inorderTraversal(root=None):
+    result = []
+
+    def helper(node):
+        if not node:
+            return
+
+        helper(node.left)
+        result.append(node.val)
+        helper(node.right)
+
+    helper(root)
+    return result
 
 
-def preorder(root):
-    if not root:
-        return
-    print(root.val)
-    preorder(root.left)
-    preorder(root.right)
+def preorderTraversal(root):
+    result = []
+
+    def helper(node):
+        if not node:
+            return
+
+        result.append(node.val)
+        helper(node.left)
+        helper(node.right)
+
+    helper(root)
+    return result
 
 
-def postorder(root):
-    if not root:
-        return
-    postorder(root.left)
-    postorder(root.right)
-    print(root.val)
+def postorderTraversal(root):
+    result = []
+
+    def helper(node):
+
+        if not node:
+            return
+
+        helper(node.left)
+        helper(node.right)
+        result.append(node.val)
+
+    helper(root)
+    return result
 
 
 def DFS(root):
@@ -102,8 +124,6 @@ def DFS(root):
         level += 1
 
 
-
-
 root_node = TreeNode(val=27)
 insert(root_node, val=30)
 insert(root_node, val=22)
@@ -112,11 +132,13 @@ insert(root_node, val=17)
 # remove()
 
 
-inorder(root_node)
+print(inorderTraversal(root_node))
 # 17, 22, 24, 27, 30
-print('\n')
-preorder(root_node)
+
+
+print(preorderTraversal(root_node))
 # 27, 22, 17, 24, 30
-print('\n')
+
+print(postorderTraversal(root_node))
 DFS(root_node)
 # 27, 22, 30, 17, 24
