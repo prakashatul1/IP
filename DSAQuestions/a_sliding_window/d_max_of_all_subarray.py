@@ -21,7 +21,6 @@ def find_max_subarray(array_int: list[int], k: int) -> list[int]:
         # eg : 5, 4, 3
         l.append(array_int[j])
 
-
         # increasing window till size by 1
         if j - i + 1 < k:
             j += 1
@@ -47,8 +46,8 @@ def find_max_subarray(array_int: list[int], k: int) -> list[int]:
 
 # array1 = [3, 1, -1, -2, 5, 3, 6, 7]
 array1 = [1, 2, 3, 1, 4, 5, 2, 3, 6]
-array1 = [1,3,-1,-3,5,3,6,7]
-array1 = [1,3,1,2,0,5]
-array1 = [-7,-8,7,5,7,1,6,0]
+array1 = [1, 3, -1, -3, 5, 3, 6, 7]
+array1 = [1, 3, 1, 2, 0, 5]
+array1 = [-7, -8, 7, 5, 7, 1, 6, 0]
 
 print(find_max_subarray(array1, 3))
