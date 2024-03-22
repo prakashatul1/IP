@@ -104,7 +104,7 @@ def postorderTraversal(root):
     return result
 
 
-def DFS(root):
+def BFS(root):
     queue = []
 
     if root:
@@ -140,5 +140,5 @@ print(preorderTraversal(root_node))
 # 27, 22, 17, 24, 30
 
 print(postorderTraversal(root_node))
-DFS(root_node)
+BFS(root_node)
 # 27, 22, 30, 17, 24
