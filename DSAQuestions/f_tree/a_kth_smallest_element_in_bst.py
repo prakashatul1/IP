@@ -1,4 +1,4 @@
-def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+def kthSmallest(self, root: None, k: int) -> int:
     n = 0
     stack = []
     cur = root
