@@ -85,7 +85,7 @@ schema
 uid_route : [(t1,2), (t2,10), (t3,5)]
 
 
-Points to node
+Points to note
 --------------------------
 Fail Open - even if rate limiter is down requests goes  
 Fail closed -  if rate limiter is down system will not process requests
