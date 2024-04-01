@@ -61,5 +61,8 @@ traffic service
 - route service will call this traffic data to identify traffic
 - from node1 to node2 it can add weights to route path
 
+things to note
 ----------
 - we have picture of the map
+- we can use cdn and object store for that
+- eg : abc.com/1100 geohash
