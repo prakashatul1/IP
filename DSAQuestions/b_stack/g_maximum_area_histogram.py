@@ -54,4 +54,5 @@ def find_maximum_area_histogram(a):
     return result
 
 
-# print(find_maximum_area_histogram([6, 2, 5, 4, 5, 1, 6]))
+print(find_maximum_area_histogram([6, 2, 5, 4, 5, 1, 6]))
+print(find_maximum_area_histogram([1, 8, 6, 2, 5, 4, 8, 3, 7]))

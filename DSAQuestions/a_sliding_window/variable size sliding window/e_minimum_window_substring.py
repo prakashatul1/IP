@@ -22,7 +22,9 @@ def minimum_window_substring(parent_string: str, child_string: str):
     # loop till end of bigger string
     while j < parent_string_length:
 
-        # different condition if value is negative
+        # count can go uo to zero
+        # key value can go to negative
+        # to be able to calculate how much extra element is der in window
         if parent_string[j] in cal_dict:
             if cal_dict[parent_string[j]] > 0:
                 count -= 1

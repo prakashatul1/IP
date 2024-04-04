@@ -1,7 +1,6 @@
 # description : https://leetcode.com/problems/longest-repeating-character-replacement/description/
 
 def characterReplacement(s: str, k: int) -> int:
-
     countl = dict()
     res = 0
     maxf = 0
@@ -21,3 +20,6 @@ def characterReplacement(s: str, k: int) -> int:
         j += 1
 
     return res
+
+
+print(characterReplacement("ABBABBA", 2))

@@ -1,3 +1,6 @@
-# how datatypes and datastructure are stored in memory how much space they take
-# sorting revise all algorithm
-# 
+- how datatypes and datastructure are stored in memory how much space they take
+- MFA
+- SSO
+- revise golang 
+- pac els theorem
+- message queues
