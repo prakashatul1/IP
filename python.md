@@ -1,0 +1,4 @@
+- validation and serialisation
+- multithreading
+- argparse
+- add testcase in django
