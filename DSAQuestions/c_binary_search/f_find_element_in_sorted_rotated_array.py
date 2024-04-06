@@ -1,56 +1,50 @@
-def find_element_index(arr, ele):
-    n = find_no_of_times_array_rotated(arr)
-    print(f'mid : {n}')
-    end = len(arr) - 1
-    start = 0
+# https://leetcode.com/problems/search-in-rotated-sorted-array/
+def search(nums, target: int) -> int:
+    i, j = 0, len(nums) - 1
+    n = get_rotated_count(nums)
 
-    if ele == arr[n]:
+    if target == nums[n]:
         return n
-    elif ele > arr[end]:
-        return binary_search(arr, start, n - 1, ele)
+    elif target > nums[j]:
+        return binarySearch(nums, i, n - 1, target)
     else:
-        return binary_search(arr, n + 1, end, ele)
+        return binarySearch(nums, n + 1, j, target)
 
 
-def find_no_of_times_array_rotated(arr):
-    start = 0
-    end = len(arr) - 1
+def binarySearch(nums, i, j, target):
+    while i <= j:
 
-    while start <= end:
-
-        mid = (start + end) // 2
-        nxt = (mid + 1) % len(arr)
-        previous = (mid + len(arr) - 1) % len(arr)
-
-        if arr[mid] <= arr[nxt] and arr[mid] <= arr[previous]:
+        mid = (i + j) // 2
+        if nums[mid] == target:
             return mid
-        elif arr[nxt] < arr[mid]:
-            start = mid + 1
-        elif arr[previous] < arr[mid]:
-            end = mid - 1
-
-    return 0
-
-
-def binary_search(arr, start, end, ele):
-    while start <= end:
-
-        mid = (start + end) // 2
-        print(mid, start, end)
-        if ele == arr[mid]:
-            return mid
-        elif ele < arr[mid]:
-            end = mid - 1
-        elif ele > arr[mid]:
-            start = mid + 1
+        elif nums[mid] > target:
+            j = mid - 1
+        elif nums[mid] < target:
+            i = mid + 1
 
     return -1
 
 
-array1 = [10, 17, 1, 3, 4, 4, 5, 7]
-element1 = 10
+def get_rotated_count(nums):
+    i, j = 0, len(nums) - 1
+    while i <= j:
 
-array2 = [15, 16, 17, 1, 2, 3, 4]
-element2 = 2
+        mid = (i + j) // 2
+        nexte = (mid + 1) % len(nums)
+        previous = (mid - 1 + len(nums) % len(nums))
 
-print(find_element_index(array2, element2))
+        if nums[mid] <= nums[previous] and nums[mid] <= nums[nexte]:
+            return mid
+        elif nums[i] < nums[j]:
+            return i
+        elif nums[i] <= nums[mid]:
+            i = nexte
+        else:
+            j = previous
+
+    return 0
+
+
+print(search([4, 5, 6, 7, 0, 1, 2], 0))
+print(search([4, 5, 6, 7, 0, 1, 3], 3))
+print(search([1, 3], 2))
