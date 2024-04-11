@@ -1,3 +1,17 @@
+# https://leetcode.com/problems/longest-consecutive-sequence/description/
+
+""""
+Example 1:
+
+Input: nums = [100,4,200,1,3,2]
+Output: 4
+Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+Example 2:
+
+Input: nums = [0,3,7,2,5,8,4,6,0,1]
+Output: 9
+
+"""
 def longestConsecutive(nums):
     # j = 0
     # max_count = 1
@@ -21,21 +35,18 @@ def longestConsecutive(nums):
     #
     # return max(count, max_count)
 
-
     numSet = set(nums)
     longest = 0
 
     for n in nums:
 
-        if n-1 not in numSet:
+        if n - 1 not in numSet:
             length = 0
             while (n + length) in numSet:
                 length += 1
             longest = max(length, longest)
 
     return longest
-
-
 
 
 arr1 = [100, 4, 200, 1, 3, 2]
