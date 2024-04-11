@@ -1,8 +1,23 @@
+# https://leetcode.com/problems/group-anagrams/
+"""
+Example 1:
+
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+Example 2:
+
+Input: strs = [""]
+Output: [[""]]
+Example 3:
+
+Input: strs = ["a"]
+Output: [["a"]]
+"""
+
 from collections import defaultdict
-from typing import List, Any
 
 
-def groupAnagrams(strs: List[str]):
+def groupAnagrams(strs):
     res = defaultdict(list)
 
     for s in strs:
@@ -15,3 +30,6 @@ def groupAnagrams(strs: List[str]):
         res[tuple(count)].append(s)
 
     return res.values()
+
+
+print(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
