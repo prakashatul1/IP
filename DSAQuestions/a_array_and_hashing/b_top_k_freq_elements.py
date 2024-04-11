@@ -1,8 +1,17 @@
-from typing import List
+# https://leetcode.com/problems/top-k-frequent-elements/
+"""
+Example 1:
+
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+Example 2:
+
+Input: nums = [1], k = 1
+Output: [1]
+"""
 
 
-def topKFrequent(nums: List[int], k: int) -> List[int]:
-
+def topKFrequent(nums, k):
     count = {}
     freq = [[] for i in range(len(nums) + 1)]
 
@@ -19,6 +28,4 @@ def topKFrequent(nums: List[int], k: int) -> List[int]:
                 return res
 
 
-
-
-
+print(topKFrequent([1, 1, 1, 2, 2, 3], 2))  # result without duplicates
