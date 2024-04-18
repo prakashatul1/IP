@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+import random
+
 
 class Transaction(ABC):
     def __init__(self, customerId, tellerId):
@@ -15,6 +17,7 @@ class Transaction(ABC):
     def get_transaction_description(self):
         pass
 
+
 class Deposit(Transaction):
     def __init__(self, customerId, tellerId, amount):
         super().__init__(customerId, tellerId)
@@ -22,6 +25,7 @@ class Deposit(Transaction):
 
     def get_transaction_description(self):
         return f'Teller {self.get_teller_id()} deposited {self._amount} to account {self.get_customer_id()}'
+
 
 class Withdrawal(Transaction):
     def __init__(self, customerId, tellerId, amount):
@@ -31,12 +35,14 @@ class Withdrawal(Transaction):
     def get_transaction_description(self):
         return f'Teller {self.get_teller_id()} withdrew {self._amount} from account {self.get_customer_id()}'
 
+
 class OpenAccount(Transaction):
     def __init__(self, customerId, tellerId):
         super().__init__(customerId, tellerId)
 
     def get_transaction_description(self):
         return f'Teller {self.get_teller_id()} opened account {self.get_customer_id()}'
+
 
 class BankTeller:
     def __init__(self, id):
@@ -45,7 +51,6 @@ class BankTeller:
     def get_id(self):
         return self._id
 
-import random
 
 class BankBranch:
     def __init__(self, address, cash_on_hand, bank_system):
@@ -90,6 +95,7 @@ class BankBranch:
     def provide_cash(self, amount):
         self._cash_on_hand += amount
 
+
 class BankAccount:
     def __init__(self, customerId, name, balance):
         self._customerId = customerId
@@ -104,6 +110,7 @@ class BankAccount:
 
     def withdraw(self, amount):
         self._balance -= amount
+
 
 class BankSystem:
     def __init__(self, accounts, transactions):
@@ -146,6 +153,7 @@ class BankSystem:
         transaction = Withdrawal(customer_id, teller_id, amount)
         self._transactions.append(transaction)
 
+
 class Bank:
     def __init__(self, branches, bank_system, total_cash):
         self._branches = branches
@@ -165,6 +173,7 @@ class Bank:
     def print_transactions(self):
         for transaction in self._bank_system.get_transactions():
             print(transaction.get_transaction_description())
+
 
 bankSystem = BankSystem([], [])
 bank = Bank([], bankSystem, 10000)
