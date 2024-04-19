@@ -1,3 +1,7 @@
+import datetime
+import math
+
+
 class Vehicle:
     def __init__(self, spot_size):
         self._spot_size = spot_size
@@ -88,10 +92,6 @@ class ParkingGarage:
         return False
 
 
-import datetime
-import math
-
-
 class ParkingSystem:
     def __init__(self, parkingGarage, hourlyRate):
         self._parkingGarage = parkingGarage
@@ -130,3 +130,5 @@ print(parkingSystem.park_vehicle(driver3))  # false
 print(parkingSystem.remove_vehicle(driver1))  # true
 print(parkingSystem.remove_vehicle(driver2))  # true
 print(parkingSystem.remove_vehicle(driver3))  # false
+
+print(parkingSystem.park_vehicle(driver3))  # false
