@@ -1,39 +1,38 @@
 Requirements
 -----------------
-System should be available
-low latency
+- availability
+- low latency
 
-For rate limiting user we need rule.  
-Suppose if 1 billion user still   
-no of rules will not depend on users.   
-we will need to store rule for each api.
+- rule for each api
+- not on users
 
-1 rule = 250 bytes approx  
-1 million api * 250 bytes = 250 MB 
-
-250 is not that much  
-We will store data in disk(mysql) to make it persistent 
+- 1 rule = 250 bytes approx  
+- 1 million api * 250 bytes = 250 MB 
+ 
+- can be stored in disk
 
 rule schema
 ------------------
-id  
-uid  
-url  
-time (minute/sec/hour)  
-requests (10/100/1000) 
+- id  
+- uid  
+- url  
+- time (minute/sec/hour)  
+- requests (10/100/1000) 
 -------------------
-
-Now on rules we can apply  
-4 different types of rate limiting algorithm.  
 eg. rate limit = 5 requests/min
+
+Algorithms
+------------
 
 token bucket
 --------------------
-For each user request we store timestamp  
-and total number of tokens available.  
-now on new request we check  
-if same minute then reduce token  
-if new minute the refill bucket and use token
+store 
+- timestamp - each user request + no if token available
+- new request - check
+  - if minute(current request) = minute(previous request)
+    - reduce token count
+  - if new minute 
+    - refill bucket and use token
 --------------------
 schema
 --------------------
@@ -43,18 +42,36 @@ uid_route : 11.02:05  4
 
 leaky bucket
 ----------------------
-Each user request goes into a queue/bucket of capacity 5  
-there is a constant leak rate of 5 requests/min at which user requests are   
-removed from queue and processed.  
-if bucket is full requests will be dropped  
-tradeoff if rate of requests is less if will be take lot of time  
-no storage is required
+- user request
+  - goes into a queue/bucket of capacity eg:5  
+  - there is a constant leak in queue
+    - rate of 5 requests/min 
+    - request removed and processed
+    - if bucket is full 
+      - requests dropped
+      
+tradeoff
+-------------
+
+disadv
+---------
+- if rate of requests is less
+- it will be take lot of time
+
+adv
+-----
+- no storage is required
+
 
 fixed window
 ------------------------
-For each request we store the count of requests  
-if it reaches the threshold requests are dropped  
-key value is reset after every minute
+- Store 
+  - count of requests
+  - if threshold reached requests are dropped
+
+- key value is reset after every minute
+- disadv - spike at stand and end of window
+
 ------------------------
 schema
 ------------------------
@@ -63,11 +80,21 @@ uid_route : 8
 
 sliding window
 --------------------------
-for each request we store the timestamps  
-for every new request we fetch a window of timestamps as per rule  
-here we fetch last for 1 min window count and check if it has reached threshold   
-and remove others timestamps from storage  
-it will take more memory  
+- store
+  - timestamps of request in array
+  - fetch subarray of timestamps (eg last 1 min)  
+  - if threshold reached
+    - request dropped
+  - else
+    - request processed
+    - added to array
+    - remove old timestamps
+
+disadv
+---------------------------
+- takes lot of memory for high tps rate limit
+- 1 million req/sec - array size 1 million
+
 ----------------------------
 schema
 ----------------------------
@@ -76,26 +103,20 @@ uid_route : [t2, t3, t4] # proportional to number of requests
 
 sliding window memory optimised
 ----------------------------
-for each request we store the count of requests along with timestamp in a hashset  
-this way we can make sure size of array is reduced to timestamp in a unit time  
-here size will be 60 as there are 60 seconds ina minute   
+- store 
+  - count and timestamp in a hashset
+  - max hashset size timestamps in unit time 
+  - eg : 1 million req per min
+  - max size - no if timestamps in a minute
 ----------------------------
 schema
 ----------------------------
 uid_route : [(t1,2), (t2,10), (t3,5)]
 
 
-Points to note
+Solution
 --------------------------
-Fail Open - even if rate limiter is down requests goes  
-Fail closed -  if rate limiter is down system will not process requests
+- Fail Open - even if rate limiter is down requests goes  
+- Fail closed -  if rate limiter is down system will not process requests
 
-here fail open is recommended   
-as we dont want entire system to be down
-
-the rate limiter will come up after 5 mins  
-till that time any intruder won't be able  
-to take system down
-
-
-
+- fail open is recommended
