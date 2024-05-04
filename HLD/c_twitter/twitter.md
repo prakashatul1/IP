@@ -1,8 +1,8 @@
 Functional requirement
 ----------------
-follow other user
-create tweet
-viewing a newsfeed
+- follow other user
+- create tweet
+- viewing a newsfeed
 
 tweet can have img and vdos ?
 
