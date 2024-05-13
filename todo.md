@@ -9,6 +9,9 @@ HLD
 - bookmyshow
 - Design Notification System
 - Google doc 
+- Client-Server Vs Peer 2 Peer Architecture
+- Microservices Imp. Design Patterns (SAGA pattern, Strangler Pattern)
+
 
 
 LLD

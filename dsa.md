@@ -5,4 +5,5 @@
 - graph
 - segment tree
 - digit dp
-- 
+
+--------------------
