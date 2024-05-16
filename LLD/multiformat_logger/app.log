@@ -1,0 +1,6 @@
+<log><level>DEBUG</level><message>This is a debug message.</message><timestamp>2024-05-16 22:25:38</timestamp></log>
+<log><level>INFO</level><message>This is an info message.</message><timestamp>2024-05-16 22:25:38</timestamp></log>
+<log><level>ERROR</level><message>This is an error message.</message><timestamp>2024-05-16 22:25:38</timestamp></log>
+<log><level>DEBUG</level><message>This is a debug message.</message><timestamp>2024-05-16 22:25:38</timestamp></log>
+<log><level>INFO</level><message>This is an info message.</message><timestamp>2024-05-16 22:25:38</timestamp></log>
+<log><level>ERROR</level><message>This is an error message.</message><timestamp>2024-05-16 22:25:38</timestamp></log>

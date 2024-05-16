@@ -57,8 +57,26 @@ class LRUCache:
 
         print(self.cache)
 
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
 
+lru = LRUCache(3)
+
+# Test inserting elements
+lru.put(1, 1)  # cache: {1}
+lru.put(2, 2)  # cache: {1, 2}
+lru.put(3, 3)  # cache: {1, 2, 3}
+print(lru.get(1))  # access 1, cache should now be {2, 3, 1}
+lru.put(4, 4)  # evicts key 2, cache should now be {3, 1, 4}
+
+# Verify that the least recently used key '2' was evicted
+assert lru.get(2) == -1, "Key 2 should be evicted; expected -1"
+
+# Access key 1 to make it the most recently used
+assert lru.get(1) == 1, "Key 1 should be available; expected 1"
+lru.put(5, 5)  # evicts key 3, cache should now be {1, 4, 5}
+
+# Verify new inserts and evictions
+assert lru.get(3) == -1, "Key 3 should be evicted; expected -1"
+assert lru.get(4) == 4, "Key 4 should be available; expected 4"
+assert lru.get(5) == 5, "Key 5 should be available; expected 5"
+
+print("All tests passed!")

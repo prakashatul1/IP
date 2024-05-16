@@ -40,3 +40,23 @@ things to study
 ----------
 cap theorem
 different tradeoffs
+
+
+Questions:
+------------------
+
+https://leetcode.com/problems/coin-change-ii/description/
+
+System Design:
+Implement public transportation system:
+
+Buses send current locations
+Riders choose routes
+Riders get updates, alerts
+Data Analysts analyze traffic patterns
+System can suggest new routes based on historical data
+
+
+https://leetcode.com/problems/evaluate-reverse-polish-notation/
+
+lru cache
