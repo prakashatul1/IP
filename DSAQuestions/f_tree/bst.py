@@ -141,4 +141,4 @@ print(preorderTraversal(root_node))
 
 print(postorderTraversal(root_node))
 BFS(root_node)
-# 27, 22, 30, 17, 24
+# [17, 24, 22, 30, 27]

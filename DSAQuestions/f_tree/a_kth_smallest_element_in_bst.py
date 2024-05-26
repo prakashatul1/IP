@@ -1,4 +1,4 @@
-def kthSmallest(self, root: None, k: int) -> int:
+def kthSmallest(root: None, k: int) -> int:
     n = 0
     stack = []
     cur = root
@@ -12,3 +12,4 @@ def kthSmallest(self, root: None, k: int) -> int:
         if n == k:
             return cur.val
         cur = cur.right
+
